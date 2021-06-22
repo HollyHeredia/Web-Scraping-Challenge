@@ -40,7 +40,6 @@ Def scrape:
 
     img_url = soup.find('img',class_="fancybox-image").get("src")
     featured_image_url = url + img_url  
-    featured_image_url
 
     # Mars Facts
     url = 'https://galaxyfacts-mars.com/'
@@ -54,3 +53,37 @@ Def scrape:
     browser.visit(url)
     html = browser.html
     soup = bs(html, 'html.parser')
+
+    hemi_names = []
+    results = soup.find_all('div', class_="collapsible results")
+    hemispheres = results[0].find_all('h3')
+        for name in hemispheres:
+             hemi_names.append(name.text)
+    
+    thumbnail_results = results[0].find_all('a', href=True)
+    thumbnail_links = []
+        for thumbnail in thumbnail_results:
+            if (thumbnail.img):
+                thumbnail_url = 'https://marshemispheres.com/' + thumbnail['href']
+                thumbnail_links.append(thumbnail_url)
+    
+    full_imgs = []
+        for url in thumbnail_links:
+             browser.visit(url)
+             html = browser.html
+             soup = bs(html, 'html.parser')
+             results = soup.find_all('div', class_='description')
+             relative_img_path = results[0].find('a', href=True)
+             img_link = 'https://marshemispheres.com/' + relative_img_path['href']
+             full_imgs.append(img_link)
+    
+    # Add all to collection
+    collection = {"news_header":header,
+                "news_article":subheader,
+                "featured_image_url":featured_image_url,
+                "mars_facts":mars_facts_table,
+                "hemispheres_names":hemi_names,
+                "full_imgs":full_imgs}
+
+    print(collection)
+
