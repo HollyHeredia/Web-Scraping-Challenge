@@ -9,7 +9,7 @@ import pandas as pd
 import time
 from webdriver_manager.chrome import ChromeDriverManager
 
-Def scrape:
+def scrape():
     # Initialize PyMongo to work with MongoDBs
     conn = 'mongodb://localhost:27017'
     client = pymongo.MongoClient(conn)
@@ -57,25 +57,25 @@ Def scrape:
     hemi_names = []
     results = soup.find_all('div', class_="collapsible results")
     hemispheres = results[0].find_all('h3')
-        for name in hemispheres:
-             hemi_names.append(name.text)
+    for name in hemispheres:
+        hemi_names.append(name.text)
     
     thumbnail_results = results[0].find_all('a', href=True)
     thumbnail_links = []
-        for thumbnail in thumbnail_results:
-            if (thumbnail.img):
-                thumbnail_url = 'https://marshemispheres.com/' + thumbnail['href']
-                thumbnail_links.append(thumbnail_url)
+    for thumbnail in thumbnail_results:
+        if (thumbnail.img):
+            thumbnail_url = 'https://marshemispheres.com/' + thumbnail['href']
+            thumbnail_links.append(thumbnail_url)
     
     full_imgs = []
-        for url in thumbnail_links:
-             browser.visit(url)
-             html = browser.html
-             soup = bs(html, 'html.parser')
-             results = soup.find_all('div', class_='description')
-             relative_img_path = results[0].find('a', href=True)
-             img_link = 'https://marshemispheres.com/' + relative_img_path['href']
-             full_imgs.append(img_link)
+    for url in thumbnail_links:
+        browser.visit(url)
+        html = browser.html
+        soup = bs(html, 'html.parser')
+        results = soup.find_all('div', class_='description')
+        relative_img_path = results[0].find('a', href=True)
+        img_link = 'https://marshemispheres.com/' + relative_img_path['href']
+        full_imgs.append(img_link)
     
     # Add all to collection
     collection = {"news_header":header,
