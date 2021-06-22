@@ -76,14 +76,18 @@ def scrape():
         relative_img_path = results[0].find('a', href=True)
         img_link = 'https://marshemispheres.com/' + relative_img_path['href']
         full_imgs.append(img_link)
+
+    browser.quit()
     
     # Add all to collection
-    collection = {"news_header":header,
-                "news_article":subheader,
-                "featured_image_url":featured_image_url,
-                "mars_facts":mars_facts_table,
-                "hemispheres_names":hemi_names,
-                "full_imgs":full_imgs}
+    collection = {}
+    
+    collection['news_header'] = header
+    collection['news_article'] = subheader
+    collection['featured_image_url'] = featured_image_url
+    collection['mars_facts'] = mars_facts_table
+    collection['hemispheres_names'] = hemi_names
+    collection['full_imgs'] =full_imgs
 
-    print(collection)
-
+    return collection
+print("Scrape complete!")
