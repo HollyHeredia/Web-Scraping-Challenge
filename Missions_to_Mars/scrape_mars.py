@@ -80,14 +80,14 @@ def scrape():
     browser.quit()
     
     # Add all to collection
-    collection = {}
+    mars_info = {}
     
-    collection['news_header'] = header
-    collection['news_article'] = subheader
-    collection['featured_image_url'] = featured_image_url
-    collection['mars_facts'] = mars_facts_table
-    collection['hemispheres_names'] = hemi_names
-    collection['full_imgs'] =full_imgs
+    mars_info['news_header'] = header
+    mars_info['news_article'] = subheader
+    mars_info['featured_image_url'] = featured_image_url
+    mars_info['mars_facts'] = mars_facts_table
+    mars_info['hemispheres_names'] = hemi_names
+    mars_info['full_imgs'] =full_imgs
 
-    return collection
+    return mars_info
 print("Scrape complete!")
