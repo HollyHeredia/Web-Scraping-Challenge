@@ -24,7 +24,7 @@ def home():
 def scrape():
 
     # Run the scrape function
-    mars_info = scrape_mars.scrape()
+    mars_info = scrape_mars.scrape_info()
 
     # Update the Mongo database using update and upsert=True
     mongo.db.collection.update({}, mars_info, upsert=True)
@@ -32,6 +32,6 @@ def scrape():
     # Redirect back to home page
     return redirect("/")
 
-
+    
 if __name__ == "__main__":
     app.run(debug=True)

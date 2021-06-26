@@ -90,4 +90,3 @@ def scrape():
     mars_info['full_imgs'] =full_imgs
 
     return mars_info
-print("Scrape complete!")
