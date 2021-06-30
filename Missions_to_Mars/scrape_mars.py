@@ -19,7 +19,8 @@ def scrape():
     collection = db.articles
 
     # Setup splinter
-    executable_path = {'executable_path': r'\Users\holly\.wdm\drivers\chromedriver\win32\91.0.4472.101\chromedriver.exe'}
+    #executable_path = {'executable_path': r'\Users\holly\.wdm\drivers\chromedriver\win32\91.0.4472.101\chromedriver.exe'}
+    executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
 
     # Mars News
@@ -57,6 +58,7 @@ def scrape():
     hemi_names = []
     results = soup.find_all('div', class_="collapsible results")
     hemispheres = results[0].find_all('h3')
+    
     for name in hemispheres:
         hemi_names.append(name.text)
     
