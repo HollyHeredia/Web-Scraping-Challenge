@@ -74,7 +74,7 @@ def scrape_info():
         browser.visit(url)
         html = browser.html
         soup = bs(html, 'html.parser')
-        results = soup.find_all('div', class_='description')
+        results = soup.find_all('div', class_='downloads')
         relative_img_path = results[0].find('a', href=True)
         img_link = 'https://marshemispheres.com/' + relative_img_path['href']
         full_imgs.append(img_link)
@@ -89,7 +89,7 @@ def scrape_info():
     mars_info['featured_image_url'] = featured_image_url
     mars_info['mars_facts'] = mars_facts_table
     mars_info['hemispheres_names'] = hemi_names
-    mars_info['full_imgs'] =full_imgs
+    mars_info['full_imgs'] = full_imgs
 
     print(mars_info)
     return mars_info
