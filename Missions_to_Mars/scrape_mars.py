@@ -9,7 +9,7 @@ import pandas as pd
 import time
 from webdriver_manager.chrome import ChromeDriverManager
 
-def scrape():
+def scrape_info():
     # Initialize PyMongo to work with MongoDBs
     conn = 'mongodb://localhost:27017'
     client = pymongo.MongoClient(conn)
@@ -91,4 +91,5 @@ def scrape():
     mars_info['hemispheres_names'] = hemi_names
     mars_info['full_imgs'] =full_imgs
 
+    print(mars_info)
     return mars_info

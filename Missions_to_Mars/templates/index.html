@@ -6,15 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../Images_css/styles.css">
+  <link rel="stylesheet" href=".../Images_css/styles.css">
 </head>
 
 <header class="masthead">
     <div class="container h-100">
       <div class="row h-100 align-items-center">
         <div class="col-12 text-center"  id="vpadding">
-          <h1 class="font-weight-light" style="color:rgb(179, 65, 65)">Mission to Mars</h1>
-          <p><a class="btn btn-primary btn-lg" style="background-color: #8d8d88; border: 0px;" href="/scrape" role="button">Get Mars Facts!</a></p>
+          <h1 class="font-weight-light" style="color:black">Mission to Mars</h1>
+          <p><a class="btn btn-danger btn-lg" href="/scrape" role="button">Get Mars Facts!</a></p>
         </div>
       </div>
     </div>
@@ -57,7 +57,7 @@
   <div class="row" style="margin-top: 20px">
     <div class="col-md-3">
       <div class="card" style="width: 300px;">
-        <img class="card-img-top" width="200" src="{{ mars.full_imgs[0]+}}" alt="Card image cap">
+        <img class="card-img-top" width="200" src="{{ mars.full_imgs[0]['img_url'] }}" alt="Card image cap">
           <div class="card-body">
           <p class="card-text">{{ mars.hemispheres_names[0]['title'] }}</p>
           </div>
