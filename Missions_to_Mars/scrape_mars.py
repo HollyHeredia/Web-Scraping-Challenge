@@ -64,6 +64,7 @@ def scrape_info():
     
     thumbnail_results = results[0].find_all('a', href=True)
     thumbnail_links = []
+
     for thumbnail in thumbnail_results:
         if (thumbnail.img):
             thumbnail_url = 'https://marshemispheres.com/' + thumbnail['href']
@@ -80,6 +81,9 @@ def scrape_info():
         full_imgs.append(img_link)
 
     browser.quit()
+
+    hemi_info = []
+    hemi_info.append({"title" : hemi_names, "img_url" : full_imgs})
     
     # Add all to collection
     mars_info = {}
